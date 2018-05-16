@@ -4,7 +4,7 @@ module.exports =
 {
     run: function ()
     {
-        var commandReader = require("./commandReader");
-        commandReader.initialize();
+        var CommandReader = require("./CommandReader");
+        var commandReader = new CommandReader();
     }
 };

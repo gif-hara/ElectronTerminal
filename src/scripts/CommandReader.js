@@ -1,25 +1,22 @@
 'use strict';
 
-/**
- * ユーザーが入力したコマンドを処理するクラス
- */
-let hoge = 0;
-module.exports =
+module.exports = class CommandReader
 {
     /**
-     * 初期化
+     * ユーザーが入力したコマンドを処理するクラス
      */
-    initialize: function()
+    constructor()
     {
+        this.hoge = 0;
         var inputField = document.forms.command.text;
         inputField.onkeydown = () =>
         {
             if (window.event.keyCode == 13)
             {
                 var inputText = document.forms.command.text.value;
-                hoge++;
-                alert(hoge);
+                this.hoge++;
+                alert(inputText + " hoge = " + this.hoge);
             }
         };
     }
-};
+}
