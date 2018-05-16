@@ -1,17 +1,19 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Hello World!</title>
-        <link href="main.css" rel="stylesheet"/>
-        <script src="application.js"></script>
-    </head>
-    <body>
-        <div class="command">
-            <form name="command" class="command" onsubmit="return false;">
-                <label for="text_content">
-                    <input type="text" name="text" class="text" onkeydown="onKeyDownTextContent();">
-                </label>
-            </form>
-        </div>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <form name="command" onsubmit="return false;">
+        <label for="text_content">
+            <input type="text" name="text" id="command_input_field" class="text">
+        </label>
+    </form>
+
+    <script src="index.js"></script>    
+</body>
+
 </html>
