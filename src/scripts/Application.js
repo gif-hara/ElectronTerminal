@@ -1,10 +1,18 @@
 'use strict';
 
-module.exports =
+module.exports = class Application
 {
-    run: function ()
+    constructor()
+    {
+
+    }
+
+    /**
+     * アプリケーションを開始する
+     */
+    run()
     {
         var CommandReader = require("./CommandReader");
         var commandReader = new CommandReader();
     }
-};
+}
