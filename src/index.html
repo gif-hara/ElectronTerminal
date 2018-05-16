@@ -6,9 +6,9 @@
         <script src="application.js"></script>
     </head>
     <body>
-        <form name="input_form">
+        <form name="command" class="command" onsubmit="return false;">
             <label for="text_content">
-                <input type="text" id="input_text" onkeydown="onKeyDownTextContent();"/>
+                <input type="text" name="text" onkeydown="onKeyDownTextContent();" style="width: 100%;">
             </label>
         </form>
     </body>
