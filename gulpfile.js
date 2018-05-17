@@ -21,8 +21,20 @@ gulp.task("clean:dist", function () {
     return del.sync(["dist/*"]);
 });
 
+// tsファイルに更新があったらコンパイルする
+gulp.task("watch:ts", () =>
+{
+    return gulp.watch(
+        ["src/ts/*ts"],
+        [
+            "clean:dist",
+            "compile:ts"
+        ]);
+});
+
 gulp.task("default",
 [
     "clean:dist",
-    "compile:ts"
+    "compile:ts",
+    "watch:ts"
 ]);
