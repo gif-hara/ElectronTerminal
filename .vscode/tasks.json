@@ -6,7 +6,7 @@
         {
             "label": "Build and Run",
             "type": "shell",
-            "command": "npx electron ./",
+            "command": "npm run start",
             "group": {
                 "kind": "build",
                 "isDefault": true

@@ -11,15 +11,17 @@ gulp.task("compile:ts", () =>
         out: "main.js"
     };
 
-    return gulp.src(["src/ts/*ts"])
+    return gulp
+    .src(["src/ts/*ts"])
     .pipe(typescript(options))
     .js
     .pipe(gulp.dest("dist/js"));
 });
 
 // distフォルダを空にする
-gulp.task("clean:dist", function () {
-    return del.sync(["dist/*"]);
+gulp.task("clean:dist", () =>
+{
+    return del.sync(["dist/*"]);   
 });
 
 // tsファイルに更新があったらコンパイルする
@@ -51,9 +53,18 @@ gulp.task("electron:reload", () =>
     electron.reload();
 });
 
-gulp.task("default",
+// 必要なタイミングでコンパイルを行うタスク
+gulp.task("watch",
 [
     "clean:dist",
     "compile:ts",
     "watch:ts"
 ]);
+
+// ビルド
+gulp.task("run",
+[
+    "clean:dist",
+    "compile:ts",
+    "electron:start"
+])
