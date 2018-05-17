@@ -6,7 +6,6 @@ namespace ET
     {
         constructor()
         {
-
         }
 
         public run(): void

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link href="main.css" rel="stylesheet" />
+    <link href="src/main.css" rel="stylesheet" />
 </head>
 
 <body>
+    <script>require('electron-connect').client.create()</script>
     <div class="command">
         <form name="command" onsubmit="return false;">
             <label for="text_content">
@@ -15,7 +16,7 @@
         </form>
     </div>
 
-    <script src="../dist/js/main.js"></script>
+    <script src="dist/js/main.js"></script>
 </body>
 
 </html>
