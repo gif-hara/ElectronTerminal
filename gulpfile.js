@@ -2,6 +2,8 @@ var gulp = require("gulp");
 var typescript = require("gulp-typescript");
 var del = require("del");
 var electron = require("electron-connect").server.create();
+var runSequence = require("run-sequence");
+var process = require("process");
 
 // TypeScriptをコンパイルする
 gulp.task("compile:ts", () =>
@@ -38,19 +40,25 @@ gulp.task("watch:ts", () =>
 // Electronを起動する
 gulp.task("electron:start", () =>
 {
-    electron.start();
+    return electron.start();
 });
 
 // Electronを再起動する
 gulp.task("electron:restart", () =>
 {
-    electron.restart();
+    return electron.restart();
 });
 
 // Electronをリロードする
 gulp.task("electron:reload", () =>
 {
-    electron.reload();
+    return electron.reload();
+});
+
+// プロセスの終了
+gulp.task("process:kill", () =>
+{
+    return process.exit(0);
 });
 
 // 必要なタイミングでコンパイルを行うタスク
@@ -62,9 +70,11 @@ gulp.task("watch",
 ]);
 
 // ビルド
-gulp.task("run",
-[
-    "clean:dist",
-    "compile:ts",
-    "electron:start"
-])
+gulp.task("run", (callback) =>
+{
+    return runSequence(
+        "clean:dist",
+        "compile:ts",
+        "electron:start",
+        callback);
+});
