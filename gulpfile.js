@@ -6,7 +6,8 @@ var process = require("process");
 
 var electron = require("electron-connect").server.create(
     {
-        path: "./dist"
+        stopOnClose: true,
+        path: "./dist",
     }
 );
 
@@ -213,7 +214,15 @@ gulp.task(task.watch.all,
 // Electronを起動する
 gulp.task(task.electron.start, () =>
 {
-    return electron.start();
+    var callback = function(electronProcessState)
+    {
+        console.log("electron process state: " + electronProcessState);
+        if(electronProcessState == "stopped")
+        {
+            process.exit(0);
+        }
+    }
+    return electron.start(callback);
 });
 
 // Electronを再起動する
