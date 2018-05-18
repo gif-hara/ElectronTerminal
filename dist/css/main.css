@@ -4,3 +4,8 @@
     font-size: 12px;
     width: 100%;
 }
+
+.test
+{
+    font: outline;
+}

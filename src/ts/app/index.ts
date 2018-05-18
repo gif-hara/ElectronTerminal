@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    export class main
+    export class index
     {
         constructor()
         {
@@ -12,4 +12,4 @@ namespace ET
     }
 }
 
-new ET.main();
+new ET.index();

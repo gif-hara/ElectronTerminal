@@ -31,13 +31,13 @@ var ET;
 /// <reference path="./Application.ts"/>
 var ET;
 (function (ET) {
-    var main = /** @class */ (function () {
-        function main() {
+    var index = /** @class */ (function () {
+        function index() {
             var app = new ET.Application();
             app.run();
         }
-        return main;
+        return index;
     }());
-    ET.main = main;
+    ET.index = index;
 })(ET || (ET = {}));
-new ET.main();
+new ET.index();

@@ -1,0 +1,11 @@
+.command .text
+{
+    font-family: 'Menlo', 'monospace', 'sans-serif';
+    font-size: 12px;
+    width: 100%;
+}
+
+.test
+{
+    font: outline;
+}
