@@ -19,6 +19,7 @@ namespace ET
 
         private createWindow(): void
         {
+            var client = require("electron-connect").client;
             const path = require("path");
             const url = require("url");
             
@@ -35,6 +36,8 @@ namespace ET
             this.mainWindow.on("close", () => {
                 this.mainWindow = null;
             });
+
+            client.create(this.mainWindow);
         }
 
         private onWindowAllClosed(): void
