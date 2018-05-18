@@ -1,7 +1,6 @@
 {
   "name": "ElectronTerminal",
   "version": "1.0.0",
-  "main": "main.js",
   "scripts": {
     "start": "gulp run",
     "watch": "gulp watch",

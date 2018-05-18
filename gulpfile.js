@@ -1,9 +1,15 @@
 var gulp = require("gulp");
 var typescript = require("gulp-typescript");
 var del = require("del");
-var electron = require("electron-connect").server.create();
 var runSequence = require("run-sequence");
 var process = require("process");
+
+var electron = require("electron-connect").server.create(
+    {
+        path: "./src"
+    }
+);
+
 
 // TypeScriptをコンパイルする
 gulp.task("compile:ts", () =>
