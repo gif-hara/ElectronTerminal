@@ -1,24 +1,27 @@
 /// <reference path="./../../../node_modules/electron/electron.d.ts"/>
 const electron = require("electron");
-const app = electron.app;
-const path = require("path");
-const url = require("url");
 
 namespace ET
 {
     export class main
     {
+        app: Electron.App = null;
+
         mainWindow: Electron.BrowserWindow = null;
 
         constructor(app: Electron.App)
         {
-            app.on("ready", this.createWindow);
+            this.app = app;
 
-            app.on("window-all-closed", this.onWindowAllClosed);
+            this.app.on("ready", this.createWindow);
+            this.app.on("window-all-closed", this.onWindowAllClosed);
         }
 
         private createWindow(): void
         {
+            const path = require("path");
+            const url = require("url");
+            
             this.mainWindow = new electron.BrowserWindow({width: 800, height: 600});
 
             this.mainWindow.loadURL(url.format({
@@ -26,7 +29,7 @@ namespace ET
                 protocol: "file:",
                 slashes: false
             }));
-        
+
             this.mainWindow.webContents.openDevTools();
         
             this.mainWindow.on("close", () => {
@@ -36,7 +39,10 @@ namespace ET
 
         private onWindowAllClosed(): void
         {
-            app.quit();
+            if(process.platform != "darwin")
+            {
+                this.app.quit();
+            }
         }
 
         private onActive(): void
@@ -49,4 +55,4 @@ namespace ET
     }
 }
 
-const main = new ET.main(app);
+const main = new ET.main(electron.app);
